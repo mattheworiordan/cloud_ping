@@ -12,13 +12,15 @@ export async function pingRemainingRegions(
 ) {
   const results = {} as RegionToLatency;
 
-  for (const region of regions) {
-    if (existingResults[region] !== undefined) {
-      results[region] = existingResults[region];
-    } else {
-      results[region] = await ping(region);
-    }
-  }
+  await Promise.all(
+    regions.map(async (region) => {
+      if (existingResults[region] !== undefined) {
+        results[region] = existingResults[region];
+      } else {
+        results[region] = await ping(region); // Concurrent execution
+      }
+    })
+  );
 
   return results;
 }
