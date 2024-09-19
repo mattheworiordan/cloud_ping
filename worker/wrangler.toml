@@ -3,10 +3,9 @@ name = "cloud-ping"
 main = "src/index.ts"
 compatibility_date = "2024-05-12"
 compatibility_flags = ["nodejs_compat"]
-logpush = true
 
 kv_namespaces = [
-    { binding = "LATENCIES_STORE", id = "9edd7eae1344433caa01cc693fb29453" }
+    { binding = "LATENCIES_STORE", id = "69ddc29276884dc1add1f95c5f7e856d" }
 ]
 
 [triggers]
